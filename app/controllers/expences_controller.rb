@@ -1,0 +1,2 @@
+class ExpencesController < ApplicationController
+end
