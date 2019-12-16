@@ -1,2 +1,0 @@
-class ExpencesController < ApplicationController
-end
