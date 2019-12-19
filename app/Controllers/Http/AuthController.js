@@ -20,13 +20,11 @@ class AuthController {
       if (await auth.attempt(email, password)) {
         const user = await User.findBy('email', email);
         const access_token = await auth.generate(user);
-        return response
-          .status(200)
-          .json({
-            message: 'Logged in successfully',
-            user_email: user.email,
-            access_token
-          });
+        return response.status(200).json({
+          message: 'Logged in successfully',
+          user_email: user.email,
+          access_token
+        });
       }
     } catch (e) {
       return response
