@@ -8,10 +8,7 @@ class ExpenseSchema extends Schema {
     this.create('expenses', table => {
       table.increments();
       table.float('amount').notNullable();
-      table
-        .date('when')
-        .notNullable()
-        .defaultTo(this.fn.now());
+      table.date('when').notNullable();
       table.text('description');
       table.integer('user_id').unsigned();
       table
