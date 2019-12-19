@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /*
 |--------------------------------------------------------------------------
@@ -11,11 +11,11 @@
 |
 */
 const providers = [
-  "@adonisjs/framework/providers/AppProvider",
-  "@adonisjs/auth/providers/AuthProvider",
-  "@adonisjs/bodyparser/providers/BodyParserProvider",
-  "@adonisjs/cors/providers/CorsProvider",
-  "@adonisjs/lucid/providers/LucidProvider"
+  '@adonisjs/framework/providers/AppProvider',
+  '@adonisjs/auth/providers/AuthProvider',
+  '@adonisjs/bodyparser/providers/BodyParserProvider',
+  '@adonisjs/cors/providers/CorsProvider',
+  '@adonisjs/lucid/providers/LucidProvider'
 ];
 
 /*
@@ -28,8 +28,9 @@ const providers = [
 |
 */
 const aceProviders = [
-  "@adonisjs/lucid/providers/MigrationsProvider",
-  "@adonisjs/vow/providers/VowProvider"
+  '@adonisjs/lucid/providers/MigrationsProvider',
+  '@adonisjs/vow/providers/VowProvider',
+  '@adonisjs/validator/providers/ValidatorProvider'
 ];
 
 /*
