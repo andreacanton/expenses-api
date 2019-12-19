@@ -16,5 +16,7 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
 
-Route.post('register', 'AuthController.register');
-Route.post('login', 'AuthController.login');
+Route.group(() => {
+  Route.post('register', 'AuthController.register').validator('User');
+  Route.post('login', 'AuthController.login');
+}).formats(['json']);
