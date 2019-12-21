@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
-const Schema = use('Schema');
+const Schema = use('Schema')
 
 class UserStatusSchema extends Schema {
   up() {
@@ -9,15 +9,15 @@ class UserStatusSchema extends Schema {
       table
         .string('status')
         .notNullable()
-        .defaultTo('disabled');
-    });
+        .defaultTo('disabled')
+    })
   }
 
   down() {
     this.table('users', table => {
-      table.dropColumn('status');
-    });
+      table.dropColumn('status')
+    })
   }
 }
 
-module.exports = UserStatusSchema;
+module.exports = UserStatusSchema

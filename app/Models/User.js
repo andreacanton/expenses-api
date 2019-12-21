@@ -1,31 +1,31 @@
-'use strict';
+'use strict'
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const Model = use('Model');
+const Model = use('Model')
 
 /** @type {import('@adonisjs/framework/src/Hash')} */
-const Hash = use('Hash');
+const Hash = use('Hash')
 
 class User extends Model {
   static boot() {
-    super.boot();
+    super.boot()
 
     this.addHook('beforeSave', async userInstance => {
       if (userInstance.dirty.password) {
-        userInstance.password = await Hash.make(userInstance.password);
+        userInstance.password = await Hash.make(userInstance.password)
       }
-    });
+    })
   }
 
   tokens() {
-    return this.hasMany('App/Models/Token');
+    return this.hasMany('App/Models/Token')
   }
   expenses() {
-    return this.hasMany('App/Models/Expense');
+    return this.hasMany('App/Models/Expense')
   }
   categories() {
-    return this.hasMany('App/Models/Category');
+    return this.hasMany('App/Models/Category')
   }
 }
 
-module.exports = User;
+module.exports = User

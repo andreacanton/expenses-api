@@ -1,12 +1,12 @@
-const { hooks } = require('@adonisjs/ignitor');
+const { hooks } = require('@adonisjs/ignitor')
 
 hooks.after.providersRegistered(() => {
-  const View = use('View');
-  const Env = use('Env');
+  const View = use('View')
+  const Env = use('Env')
 
   View.global('appUrl', path => {
-    const appUrl = Env.get('APP_URL');
+    const appUrl = Env.get('APP_URL')
 
-    return path ? `${appUrl}/${path}` : appUrl;
-  });
-});
+    return path ? `${appUrl}/${path}` : appUrl
+  })
+})
