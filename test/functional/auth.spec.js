@@ -1,29 +1,60 @@
 'use strict';
 
-const { test, trait } = use('Test/Suite')('Authentication');
+const Mail = use('Mail');
 const User = use('App/Models/User');
+
+const { test, trait } = use('Test/Suite')('Authentication');
 
 trait('Test/ApiClient');
 
-test('registration should run successufully', async ({ client, assert }) => {
-  const response = await client
+test('registration should run successufully - happy path', async ({
+  client,
+  assert
+}) => {
+  Mail.fake();
+
+  const user_email = 'fake@email.com';
+  const user_pass = 'password';
+
+  const register_response = await client
     .post('register')
     .send({
-      email: 'fake@email.com',
-      password: 'password'
+      email: user_email,
+      password: user_pass
     })
     .end();
 
-  response.assertStatus(200);
-  response.assertJSONSubset({
-    message: 'User successfully registered',
-    access_token: {
-      type: 'bearer'
-    }
+  register_response.assertStatus(200);
+  register_response.assertJSON({
+    message: 'User successfully registered check your email for confirmation'
   });
+
+  const recentEmail = Mail.pullRecent();
+  assert.equal(recentEmail.message.to[0].address, user_email);
+
+  const user = await User.findBy('email', user_email);
+  const confirmation_token = await user
+    .tokens()
+    .where('type', 'email_confirmation')
+    .where('is_revoked', false)
+    .first();
+
+  const confirm_response = await client
+    .get(`email-confirmation/${confirmation_token.token}`)
+    .end();
+
+  confirm_response.assertStatus(200);
+  confirm_response.assertJSON({
+    message: 'User email confirmed'
+  });
+
+  await user.reload();
+  assert.equal(user.status, 'active');
+
+  Mail.restore();
 });
 
-test('registration with not unique email', async ({ client, assert }) => {
+test('registration with not unique email', async ({ client }) => {
   const response = await client
     .post('register')
     .send({
@@ -42,7 +73,7 @@ test('registration with not unique email', async ({ client, assert }) => {
   ]);
 });
 
-test('registration with invalid email', async ({ client, assert }) => {
+test('registration with invalid email', async ({ client }) => {
   const response = await client
     .post('register')
     .send({
@@ -61,7 +92,7 @@ test('registration with invalid email', async ({ client, assert }) => {
   ]);
 });
 
-test('email is required', async ({ client, assert }) => {
+test('email is required', async ({ client }) => {
   const response = await client
     .post('register')
     .send({
@@ -79,7 +110,7 @@ test('email is required', async ({ client, assert }) => {
     }
   ]);
 });
-test('password is required', async ({ client, assert }) => {
+test('password is required', async ({ client }) => {
   const response = await client
     .post('register')
     .send({
@@ -98,7 +129,7 @@ test('password is required', async ({ client, assert }) => {
   ]);
 });
 
-test('should login successufully', async ({ client, assert }) => {
+test('should login successufully', async ({ client }) => {
   const response = await client
     .post('login')
     .send({
@@ -117,7 +148,7 @@ test('should login successufully', async ({ client, assert }) => {
   });
 });
 
-test('login should fail', async ({ client, assert }) => {
+test('login should fail', async ({ client }) => {
   const response = await client
     .post('login')
     .send({

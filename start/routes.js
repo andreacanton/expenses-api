@@ -19,4 +19,5 @@ const Route = use('Route');
 Route.group(() => {
   Route.post('register', 'AuthController.register').validator('User');
   Route.post('login', 'AuthController.login');
+  Route.get('email-confirmation/:token', 'AuthController.confirm');
 }).formats(['json']);
