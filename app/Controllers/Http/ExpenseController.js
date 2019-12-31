@@ -20,17 +20,6 @@ class ExpenseController {
   async index({ request, response, view }) {}
 
   /**
-   * Render a form to be used for creating a new expense.
-   * GET expenses/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create({ request, response, view }) {}
-
-  /**
    * Create/save a new expense.
    * POST expenses
    *
@@ -50,17 +39,6 @@ class ExpenseController {
    * @param {View} ctx.view
    */
   async show({ params, request, response, view }) {}
-
-  /**
-   * Render a form to update an existing expense.
-   * GET expenses/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit({ params, request, response, view }) {}
 
   /**
    * Update expense details.

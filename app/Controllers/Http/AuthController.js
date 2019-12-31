@@ -60,8 +60,15 @@ class AuthController {
   async login({ request, auth, response }) {
     const { email, password } = request.only(['email', 'password'])
     try {
-      if (await auth.attempt(email, password)) {
+      if (await auth.withRefreshToken().attempt(email, password)) {
         const user = await User.findBy('email', email)
+        if (user.status !== 'active') {
+          return response
+            .status(401)
+            .json({
+              message: 'User is not confirmed, please check your email!'
+            })
+        }
         const access_token = await auth.generate(user)
         return response.status(200).json({
           message: 'Logged in successfully',
