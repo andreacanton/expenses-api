@@ -62,12 +62,10 @@ class AuthController {
     try {
       if (await auth.withRefreshToken().attempt(email, password)) {
         const user = await User.findBy('email', email)
-        if (user.status !== 'active') {
-          return response
-            .status(401)
-            .json({
-              message: 'User is not confirmed, please check your email!'
-            })
+        if (user.status === 'pending') {
+          return response.status(401).json({
+            message: 'User is not confirmed, please check your email!'
+          })
         }
         const access_token = await auth.generate(user)
         return response.status(200).json({

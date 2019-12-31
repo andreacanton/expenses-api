@@ -1,6 +1,7 @@
 'use strict'
 
 const Mail = use('Mail')
+const Factory = use('Factory')
 const User = use('App/Models/User')
 
 const { test, trait } = use('Test/Suite')('Authentication')
@@ -148,7 +149,7 @@ test('should login successufully', async ({ client }) => {
   })
 })
 
-test('login should fail', async ({ client }) => {
+test('login should fail with wrong password', async ({ client }) => {
   const response = await client
     .post('login')
     .send({
@@ -160,5 +161,24 @@ test('login should fail', async ({ client }) => {
   response.assertStatus(401)
   response.assertJSONSubset({
     message: 'Something went wrong in login!'
+  })
+})
+
+test('login should fail without confirmation', async ({ client }) => {
+  const user = await User.find(1)
+  user.status = 'pending'
+  user.save()
+
+  const response = await client
+    .post('login')
+    .send({
+      email: user.email,
+      password: 'password'
+    })
+    .end()
+
+  response.assertStatus(401)
+  response.assertJSONSubset({
+    message: 'User is not confirmed, please check your email!'
   })
 })
