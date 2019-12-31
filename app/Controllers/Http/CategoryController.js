@@ -66,10 +66,10 @@ class CategoryController {
     const { name, description, icon, color } = request.post()
     const category = request.category
 
-    category.name = name
-    category.description = description
-    category.icon = icon
-    category.color = color
+    category.name = name || category.name
+    category.description = description || category.description
+    category.icon = icon || category.icon
+    category.color = color || category.color
 
     await category.save()
 
