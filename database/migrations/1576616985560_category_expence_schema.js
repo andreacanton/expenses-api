@@ -6,14 +6,18 @@ const Schema = use('Schema')
 class CategoryExpenceSchema extends Schema {
   up() {
     this.create('category_expences', table => {
-      table.increments()
-      table.timestamps()
-      table.integer('category_id').unsigned()
+      table
+        .integer('category_id')
+        .unsigned()
+        .index('category_id')
       table
         .foreign('category_id')
         .references('categories.id')
         .onDelete('cascade')
-      table.integer('expense_id').unsigned()
+      table
+        .integer('expense_id')
+        .unsigned()
+        .index('expense_id')
       table
         .foreign('expense_id')
         .references('expenses.id')
