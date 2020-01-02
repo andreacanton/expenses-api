@@ -3,6 +3,7 @@
 const User = use('App/Models/User')
 const Token = use('App/Models/Token')
 const Mail = use('Mail')
+const Env = use('Env')
 const randomstring = require('randomstring')
 const Database = use('Database')
 
@@ -26,7 +27,7 @@ class AuthController {
       await Mail.send('emails.welcome', { token }, message => {
         message
           .to(user.email)
-          .from('noreply@expenses.com')
+          .from(Env.get('MAIL_NOREPLY', 'noreply@expenses.com'))
           .subject('Welcome to expenses')
       })
       await trx.commit()
