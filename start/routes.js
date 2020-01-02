@@ -26,6 +26,7 @@ Route.group(() => {
 Route.group(() => {
   Route.resource('categories', 'CategoryController')
     .apiOnly()
+    .validator(new Map([[['store', 'update'], ['Category']]]))
     .middleware(new Map([[['show', 'update', 'destroy'], ['findCategory']]]))
   Route.resource('expenses', 'ExpenseController')
     .apiOnly()
