@@ -30,6 +30,7 @@ Route.group(() => {
     .middleware(new Map([[['show', 'update', 'destroy'], ['findCategory']]]))
   Route.resource('expenses', 'ExpenseController')
     .apiOnly()
+    .validator(new Map([[['store', 'update'], ['Expense']]]))
     .middleware(
       new Map([
         [['show', 'update', 'destroy'], ['findExpense']],

@@ -47,6 +47,123 @@ test('should create expense', async ({ client }) => {
     expense: expenseData
   })
 })
+
+test('should not create expense due to invalid amount', async ({ client }) => {
+  const user = await Factory.model('App/Models/User').create({
+    status: 'active'
+  })
+
+  const category = await user.categories().create(categoryData)
+  otherCategoryId = category.id
+
+  const response = await client
+    .post('expenses')
+    .send({
+      ...expenseData,
+      amount: 'string',
+      category_id: category.id
+    })
+    .loginVia(user, 'jwt')
+    .end()
+
+  response.assertStatus(400)
+  response.assertJSON([
+    {
+      message: 'number validation failed on amount',
+      field: 'amount',
+      validation: 'number'
+    }
+  ])
+})
+
+test('should not create expense due to empty amount', async ({ client }) => {
+  const user = await Factory.model('App/Models/User').create({
+    status: 'active'
+  })
+
+  const category = await user.categories().create(categoryData)
+  otherCategoryId = category.id
+
+  const response = await client
+    .post('expenses')
+    .send({
+      ...expenseData,
+      amount: '',
+      category_id: category.id
+    })
+    .loginVia(user, 'jwt')
+    .end()
+
+  response.assertStatus(400)
+  response.assertJSON([
+    {
+      message: 'required validation failed on amount',
+      field: 'amount',
+      validation: 'required'
+    }
+  ])
+})
+
+test('should not create expense due to invalid when field', async ({
+  client
+}) => {
+  const user = await Factory.model('App/Models/User').create({
+    status: 'active'
+  })
+
+  const category = await user.categories().create(categoryData)
+  otherCategoryId = category.id
+
+  const response = await client
+    .post('expenses')
+    .send({
+      ...expenseData,
+      when: 'not a date',
+      category_id: category.id
+    })
+    .loginVia(user, 'jwt')
+    .end()
+
+  response.assertStatus(400)
+  response.assertJSON([
+    {
+      message: 'date validation failed on when',
+      field: 'when',
+      validation: 'date'
+    }
+  ])
+})
+
+test('should not create expense due to empty when field', async ({
+  client
+}) => {
+  const user = await Factory.model('App/Models/User').create({
+    status: 'active'
+  })
+
+  const category = await user.categories().create(categoryData)
+  otherCategoryId = category.id
+
+  const response = await client
+    .post('expenses')
+    .send({
+      ...expenseData,
+      when: '',
+      category_id: category.id
+    })
+    .loginVia(user, 'jwt')
+    .end()
+
+  response.assertStatus(400)
+  response.assertJSON([
+    {
+      message: 'required validation failed on when',
+      field: 'when',
+      validation: 'required'
+    }
+  ])
+})
+
 test('should not create expense with other category id', async ({ client }) => {
   const user = await Factory.model('App/Models/User').create({
     status: 'active'
@@ -125,7 +242,8 @@ test('should update expense', async ({ client }) => {
   const response = await client
     .put(`expenses/${expense.id}`)
     .send({
-      amount: 18.45
+      amount: 18.45,
+      when: '2020-01-02'
     })
     .loginVia(user, 'jwt')
     .end()
@@ -148,6 +266,7 @@ test('should not update expense with other category id', async ({
     .put(`expenses/${expense.id}`)
     .send({
       amount: 18.45,
+      when: '2020-01-02',
       category_id: otherCategoryId
     })
     .loginVia(user, 'jwt')
@@ -167,7 +286,8 @@ test('should not update other users expense', async ({ client }) => {
   const response = await client
     .put(`expenses/${otherExpenseId}`)
     .send({
-      name: 'Test expense edited'
+      amount: 18.45,
+      when: '2020-01-02'
     })
     .loginVia(user, 'jwt')
     .end()
