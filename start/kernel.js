@@ -37,7 +37,9 @@ const globalMiddleware = [
 const namedMiddleware = {
   auth: 'Adonis/Middleware/Auth',
   guest: 'Adonis/Middleware/AllowGuestOnly',
-  findCategory: 'App/Middleware/FindCategory'
+  findCategory: 'App/Middleware/FindCategory',
+  findExpense: 'App/Middleware/FindExpense',
+  checkCategory: 'App/Middleware/CheckCategory'
 }
 
 /*

@@ -10,11 +10,19 @@ class ExpenseSchema extends Schema {
       table.float('amount').notNullable()
       table.date('when').notNullable()
       table.text('description')
-      table.integer('user_id').unsigned()
+      table
+        .integer('user_id')
+        .unsigned()
+        .notNullable()
       table
         .foreign('user_id')
         .references('users.id')
         .onDelete('cascade')
+      table.integer('category_id').unsigned()
+      table
+        .foreign('category_id')
+        .references('categories.id')
+        .onDelete('set null')
       table.timestamps()
     })
   }

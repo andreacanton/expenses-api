@@ -21,3 +21,11 @@ Factory.blueprint('App/Models/User', async faker => {
     password: faker.password()
   }
 })
+Factory.blueprint('App/Models/Category', async faker => {
+  return {
+    name: faker.word(),
+    description: faker.sentence(),
+    color: faker.color({ format: 'hex' }),
+    icon: faker.word()
+  }
+})

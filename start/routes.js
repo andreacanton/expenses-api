@@ -27,7 +27,14 @@ Route.group(() => {
   Route.resource('categories', 'CategoryController')
     .apiOnly()
     .middleware(new Map([[['show', 'update', 'destroy'], ['findCategory']]]))
-  Route.resource('expenses', 'ExpenseController').apiOnly()
+  Route.resource('expenses', 'ExpenseController')
+    .apiOnly()
+    .middleware(
+      new Map([
+        [['show', 'update', 'destroy'], ['findExpense']],
+        [['store', 'update'], ['checkCategory']]
+      ])
+    )
 })
   .middleware(['auth'])
   .formats(['json'])

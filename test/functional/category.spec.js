@@ -39,14 +39,14 @@ test('should list categories', async ({ client, assert }) => {
   const user = await Factory.model('App/Models/User').create({
     status: 'active'
   })
-  await user.categories().create(categoryData)
+  const category = await user.categories().create(categoryData)
   const response = await client
     .get('categories')
     .loginVia(user, 'jwt')
     .end()
 
   response.assertStatus(200)
-  response.assertJSONSubset([categoryData])
+  response.assertJSON([category.toJSON()])
 })
 
 test('should show category', async ({ client, assert }) => {
@@ -62,7 +62,7 @@ test('should show category', async ({ client, assert }) => {
     .end()
 
   response.assertStatus(200)
-  response.assertJSONSubset(categoryData)
+  response.assertJSON(category.toJSON())
 })
 test('should throw error showing category of other users', async ({
   client
@@ -137,7 +137,7 @@ test('should delete category', async ({ client, assert }) => {
   })
 })
 
-test("should note delete other user's category", async ({ client, assert }) => {
+test("should not delete other user's category", async ({ client, assert }) => {
   const user = await Factory.model('App/Models/User').create({
     status: 'active'
   })

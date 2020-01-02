@@ -5,10 +5,10 @@ const Model = use('Model')
 
 class Expense extends Model {
   user() {
-    return this.belongsTo('App/Model/User')
+    return this.belongsTo('App/Models/User')
   }
-  categories() {
-    return this.belongsToMany('App/Model/Category')
+  category() {
+    return this.belongsTo('App/Models/Category')
   }
 }
 

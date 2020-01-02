@@ -3,7 +3,7 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-class FindCategory {
+class FindExpense {
   /**
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -11,22 +11,22 @@ class FindCategory {
    */
   async handle({ params: { id }, response, request, auth }, next) {
     const user = await auth.getUser()
-    const categories = await user
-      .categories()
+    const expenses = await user
+      .expenses()
       .where('id', id)
       .fetch()
-    const category = categories.first()
-    if (!category) {
+    const expense = expenses.first()
+    if (!expense) {
       return response.status(404).json({
-        message: 'Category not found',
+        message: 'Expense not found',
         id
       })
     }
 
-    request.category = category
+    request.expense = expense
 
     await next()
   }
 }
 
-module.exports = FindCategory
+module.exports = FindExpense

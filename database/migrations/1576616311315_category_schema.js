@@ -11,7 +11,10 @@ class CategorySchema extends Schema {
       table.text('description')
       table.string('icon')
       table.string('color')
-      table.integer('user_id').unsigned()
+      table
+        .integer('user_id')
+        .unsigned()
+        .notNullable()
       table
         .foreign('user_id')
         .references('users.id')
