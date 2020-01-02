@@ -34,7 +34,11 @@ module.exports = {
     },
     maxConnections: 5,
     maxMessages: 100,
-    rateLimit: 10
+    rateLimit: 10,
+    tls: {
+      // do not fail on invalid certs
+      rejectUnauthorized: false
+    }
   },
 
   /*

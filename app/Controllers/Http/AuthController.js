@@ -4,6 +4,7 @@ const User = use('App/Models/User')
 const Token = use('App/Models/Token')
 const Mail = use('Mail')
 const randomstring = require('randomstring')
+const Database = use('Database')
 
 class AuthController {
   /**
@@ -12,21 +13,34 @@ class AuthController {
    */
   async register({ request, auth, response }) {
     const { email, password } = request.only(['email', 'password'])
+    const trx = await Database.beginTransaction()
 
-    const user = await User.create({ email, password, status: 'pending' })
-    const token = randomstring.generate()
-    user.tokens().create({ type: 'email_confirmation', token })
+    try {
+      const user = await User.create(
+        { email, password, status: 'pending' },
+        trx
+      )
+      const token = randomstring.generate()
+      user.tokens().create({ type: 'email_confirmation', token }, trx)
 
-    await Mail.send('emails.welcome', { token }, message => {
-      message
-        .to(user.email)
-        .from('noreply@expenses.com')
-        .subject('Welcome to expenses')
-    })
+      await Mail.send('emails.welcome', { token }, message => {
+        message
+          .to(user.email)
+          .from('noreply@expenses.com')
+          .subject('Welcome to expenses')
+      })
+      await trx.commit()
 
-    return response.status(200).json({
-      message: 'User successfully registered check your email for confirmation'
-    })
+      return response.status(200).json({
+        message:
+          'User successfully registered check your email for confirmation'
+      })
+    } catch (e) {
+      await trx.rollback()
+      return response.status(200).json({
+        error: e
+      })
+    }
   }
 
   async confirm({ params: { token }, response }) {
