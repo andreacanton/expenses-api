@@ -1,8 +1,8 @@
 {
-  "name": "adonis-api-app",
-  "version": "4.1.0",
+  "name": "expenses",
+  "version": "1.0.0",
   "adonis-version": "4.1.0",
-  "description": "Adonisjs boilerplate for API server with pre-configured JWT",
+  "description": "Expenses api",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
@@ -13,8 +13,11 @@
     "adonisjs",
     "adonis-app"
   ],
-  "author": "",
-  "license": "UNLICENSED",
+  "author": "Andrea Canton",
+  "license": "MIT",
+  "engines": {
+    "node": "8.5.0"
+  },
   "private": true,
   "dependencies": {
     "@adonisjs/ace": "^5.0.8",
