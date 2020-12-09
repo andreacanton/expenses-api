@@ -168,12 +168,12 @@
     indicative "^5.0.8"
     lodash "^4.17.11"
 
-"@adonisjs/view@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@adonisjs/view/-/view-1.0.9.tgz#0ccae9cae1d6bdbc5705d93f53e5b06eab54d641"
-  integrity sha512-GG/Yp0rQzAd8pezc3elw7bjW151mWlVBLehfSDd5OyNftBQEOcfBvXtu+3XPDcP9ch1CN7ASctTe4VMd9y/6FA==
+"@adonisjs/view@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@adonisjs/view/-/view-1.0.13.tgz#4c9e4f011bb7a30b11dfddf75d7d78a4acc34184"
+  integrity sha512-nZURPSrYZ1e2QTEd6J9gspL2hRzOhsW6cj5Z9ehqUQNSTjSiUtkljdzgLWc9lS55ODwiYrpvEpAWmKgnbYwxiQ==
   dependencies:
-    edge.js "^2.0.2"
+    edge.js "^2.2.0"
 
 "@adonisjs/vow@^1.0.17":
   version "1.0.17"
@@ -304,15 +304,6 @@
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/@poppinss/manager/-/manager-3.0.8.tgz#c29259d5d5a2abfa8b6be5845309a157c66b0813"
   integrity sha512-pFUHNlupE00FxrCsUQy7wpCdJoKrDb3eIF1jShwKiREAmrAiiVs0yHbPm5ZuP8ewlaxPU2tyIkLBJKhjZw3xpg==
-
-"@poppinss/utils@^2.0.0":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@poppinss/utils/-/utils-2.1.1.tgz#12d22d9149e220e652502fd01b1a22dac55c1356"
-  integrity sha512-1SJmgIxoJuFD6fRsrF/209bQrYhoopr1OJ6RZ7P+VOmFaqajlvlTBCcVpNaXqOWBdMeg5z8Z4NDMRWA2PfFt+A==
-  dependencies:
-    fs-readdir-recursive "^1.1.0"
-    require-all "^3.0.0"
-    resolve-from "^5.0.0"
 
 "@poppinss/utils@^2.1.2", "@poppinss/utils@^2.5.2":
   version "2.5.9"
@@ -599,6 +590,11 @@ acorn@^7.0.0:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.1.1.tgz#e35668de0b402f359de515c5482a1ab9f89a69bf"
   integrity sha512-add7dgA5ppRPxCFJoAGfMDi7PIBXq1RtGo7BhbLaxwrXPOmw8gq48Y9ozT01hUKy9byMjlR20EJhu5zlkErEkg==
+
+acorn@^7.1.1:
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
+  integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
 agent-base@4, agent-base@^4.2.0, agent-base@^4.3.0:
   version "4.3.0"
@@ -1049,7 +1045,7 @@ astral-regex@^2.0.0:
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-2.0.0.tgz#483143c567aeed4785759c0865786dc77d7d2e31"
   integrity sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==
 
-astring@^1.4.1:
+astring@^1.4.3:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.4.3.tgz#b99d4b0349bc7b28934bb9f03f86ec34d69c3a09"
   integrity sha512-yJlJU/bmN820vL+cbWShu2YQU87dBP5V7BH2N4wODapRv27A2dZtUD0LgjP9lZENvPe9XRoSyWx+pZR6qKqNBw==
@@ -2041,22 +2037,23 @@ edge-error@^1.0.4:
   resolved "https://registry.yarnpkg.com/edge-error/-/edge-error-1.0.4.tgz#b165a90fcb7164cd636a7e20d86ecaf7a5cad0e9"
   integrity sha512-8i/EUKNm2lQRKXHVEo+Nc4hChkB5tu2vg59KdDi6ImkPaRIvY3uHu02Xug9rHEcHa3Z3Xbdh3TSvLBj4tfoeyA==
 
-edge-lexer@^2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/edge-lexer/-/edge-lexer-2.0.10.tgz#417dba6352ea38297f4924d36b61d58daa28b469"
-  integrity sha512-txtYI45TTL5FEDOI+NFN00yGvsZUhmUK35c2RdEIAx+BQdP8ox+2dM3hJdxgJIZWqG4f2Q7TJNgfgS5OXNRNQg==
+edge-lexer@^2.1.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/edge-lexer/-/edge-lexer-2.2.0.tgz#5bbce2eda90debaf92cc55a0fbec27c42d1ec52b"
+  integrity sha512-oi1s9bYoubrn1ZCrXAv6cEOvjhMKfqkppq28rzlkKLkXhqZh610UCbLlajEmjUoaIlF6B6xFXXOucLPm5O3ulQ==
   dependencies:
     edge-error "^1.0.4"
 
-edge-parser@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/edge-parser/-/edge-parser-2.1.1.tgz#7e4bd847f1c2e4930e487edbed083df73cb32d71"
-  integrity sha512-aklvMdF+Cwx1gx0jH93Oee7IWKOh+W6VG7rjkLJbQQ9YK9apTo4yoOE1aMJi+wepYS/OZX936q7b1RNnUM2vLA==
+edge-parser@^3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/edge-parser/-/edge-parser-3.0.8.tgz#1578b7c3e07cddeefc5acda1711fc0f03e0a58c3"
+  integrity sha512-TOWMYA+jbptO2BYvjwFBo0g2HZaS/5+++GEJLIne1VOthEJqQbQhZvH1xQoSa+nZXBj+aarwxrmj+idqqZpr7w==
   dependencies:
-    acorn "^7.0.0"
-    astring "^1.4.1"
+    acorn "^7.1.1"
+    astring "^1.4.3"
     edge-error "^1.0.4"
-    edge-lexer "^2.0.10"
+    edge-lexer "^2.1.0"
+    js-stringify "^1.0.2"
 
 edge.js@^1.1.4:
   version "1.1.4"
@@ -2073,20 +2070,19 @@ edge.js@^1.1.4:
     require-uncached "^1.0.3"
     upcast "^2.1.1"
 
-edge.js@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/edge.js/-/edge.js-2.0.2.tgz#7d89d989b4a9e6024a83c7185031bf876d3a2ba6"
-  integrity sha512-VH+tviMvqA/wSQ8SX7R29bIL6aR2FS8SPo4hgAuWNM1w91tlmQMIcEtJsBkZJqFqsDq0S/VFtPPQpfHZpipbng==
+edge.js@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/edge.js/-/edge.js-2.2.0.tgz#ba96c6a893c1d03174eecdee24d48073783fa0b6"
+  integrity sha512-TCbV0n29WkY3OpqG01OAvPpBdhd8cUwOglWrI0IIuhgje/5LVhmR1sStPU2wshtmAiwRF1NkgrCNXD+iY+mV4g==
   dependencies:
-    "@poppinss/utils" "^2.0.0"
-    debug "^4.1.1"
+    "@poppinss/utils" "^2.1.2"
     edge-error "^1.0.4"
-    edge-parser "^2.1.1"
+    edge-lexer "^2.1.0"
+    edge-parser "^3.0.8"
     he "^1.2.0"
-    import-fresh "^3.1.0"
+    import-fresh "^3.2.1"
     lodash "^4.17.15"
-    macroable "^2.0.2"
-    node-exceptions "^4.0.1"
+    macroable "^4.0.2"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -3005,10 +3001,10 @@ immediate@~3.0.5:
   resolved "https://registry.yarnpkg.com/immediate/-/immediate-3.0.6.tgz#9db1dbd0faf8de6fbe0f5dd5e56bb606280de69b"
   integrity sha1-nbHb0Pr43m++D13V5Wu2BigN5ps=
 
-import-fresh@^3.1.0:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.2.1.tgz#633ff618506e793af5ac91bf48b72677e15cbe66"
-  integrity sha512-6e1q1cnWP2RXD9/keSkxHScg508CdXqXWgWBaETNhyuBFz+kUZlKboh+ISK+bU++DmbHimVBrOz/zzPe0sZ3sQ==
+import-fresh@^3.2.1:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.2.2.tgz#fc129c160c5d68235507f4331a6baad186bdbc3e"
+  integrity sha512-cTPNrlvJT6twpYy+YmKUKrTSjWFs3bjYjAhCwm+z4EOCubZxAuO+hHpRN64TqjEaYSHs7tJAE0w1CKMGmsG/lw==
   dependencies:
     parent-module "^1.0.0"
     resolve-from "^4.0.0"
@@ -3434,6 +3430,11 @@ japa@1.0.6:
     retry "^0.10.1"
     right-pad "^1.0.1"
     variable-diff "^1.1.0"
+
+js-stringify@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/js-stringify/-/js-stringify-1.0.2.tgz#1736fddfd9724f28a3682adc6230ae7e4e9679db"
+  integrity sha1-Fzb939lyTyijaCrcYjCufk6Weds=
 
 js-tokens@^4.0.0:
   version "4.0.0"
@@ -3966,13 +3967,6 @@ macroable@^1.0.0:
   dependencies:
     node-exceptions "^2.0.1"
 
-macroable@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/macroable/-/macroable-2.0.2.tgz#8e44fa60d48e15ebb3a403047bfe25b793c094d3"
-  integrity sha512-EvZpcVSKqubE4U2ikQ6sqTuoTrjSBFKxXdgmVNc5thfhHyf1/gT12izZfizxHFUJkTNy/4wYWJfgOaX2AVKEpA==
-  dependencies:
-    node-exceptions "^4.0.1"
-
 macroable@^4.0.2:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/macroable/-/macroable-4.0.4.tgz#39990d15bc013d496ce509a76511cc443b35b9b7"
@@ -4356,11 +4350,6 @@ node-exceptions@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/node-exceptions/-/node-exceptions-3.0.0.tgz#48b8e10da71370845ef1af583778139527308d11"
   integrity sha512-pFhMAqdN1avrFwtZs66HxYiVnbnH9wjXB4m8IKs5Z9+r7U5voqxT+EDbVkRfge+V7JnkOgKhN4HfKBn1o5g9Wg==
-
-node-exceptions@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/node-exceptions/-/node-exceptions-4.0.1.tgz#70425d17a245c3c00709c72f57c4c20b39ef1a4c"
-  integrity sha512-KJI+FawYOv74x60H6+zrBPfO2vvp9m0pHZi6SH8BBBuc67Irv11DsqY4Le4EBFq1/T5aXFU3hkLrMgtW7RNXxA==
 
 node-pre-gyp@^0.11.0:
   version "0.11.0"
@@ -6127,7 +6116,7 @@ snyk-try-require@1.3.1, snyk-try-require@^1.1.1, snyk-try-require@^1.3.1:
     lru-cache "^4.0.0"
     then-fs "^2.0.0"
 
-snyk@1.434.2, snyk@^1.434.2:
+snyk@^1.434.2:
   version "1.434.2"
   resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.434.2.tgz#663ae34381752368b369b633c07791dd1089dd83"
   integrity sha512-DPU3c0ixrefM7Rh7klUn9fTTTaiee3J3SKVn4zU7LxDREKlxPB+A+xiGkEbkRsLqIZK1xJtP6KopwWOSYjZ+Ow==
